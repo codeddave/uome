@@ -7,21 +7,23 @@ import AppNavbar from "./components/layout/AppNavbar";
 import Dashboard from "./components/layout/Dashboard";
 import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 import "./App.css";
-import rrfProps from "./store";
+import { rrfProps } from "./store";
 
 function App() {
   return (
     <Provider store={store}>
-      <Router>
-        <div className="App">
-          <AppNavbar />
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={Dashboard} />
-            </Switch>
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <Router>
+          <div className="App">
+            <AppNavbar />
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={Dashboard} />
+              </Switch>
+            </div>
           </div>
-        </div>
-      </Router>
+        </Router>
+      </ReactReduxFirebaseProvider>
     </Provider>
   );
 }

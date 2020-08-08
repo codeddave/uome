@@ -58,7 +58,7 @@ const store = createStoreWithFirebase(
   composeWithDevTools(applyMiddleware(...middlewares))
 );
 
-const rrfProps = {
+export const rrfProps = {
   firebase,
   config: rrfConfig,
   dispatch: store.dispatch,

@@ -7,24 +7,7 @@ import { firestoreConnect } from "react-redux-firebase";
 
 class Clients extends Component {
   render() {
-    const clients = [
-      {
-        id: "345435",
-        firstName: "davd",
-        lastName: "gdghgf",
-        email: "dave@gmail.com",
-        phone: "123443",
-        balance: "40",
-      },
-      {
-        id: "345435",
-        firstName: "davd",
-        lastName: "gdghgf",
-        email: "dave@gmail.com",
-        phone: "123443",
-        balance: "40",
-      },
-    ];
+    const { clients } = this.props;
 
     if (clients) {
       return (
@@ -75,5 +58,13 @@ class Clients extends Component {
     }
   }
 }
-
-export default Clients;
+Clients.propTypes = {
+  firestore: PropTypes.object.isRequired,
+  clients: PropTypes.array,
+};
+export default compose(
+  firestoreConnect([{ collection: "clients" }]),
+  connect((state, props) => ({
+    clients: state.firestore.ordered.clients,
+  }))
+)(Clients);
