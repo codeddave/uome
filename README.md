@@ -1,1 +1,1 @@
-A web application that help you keep track of clients that owe you money. 
+A web application that helps you keep track of clients that owe you money. 
